@@ -1,0 +1,25 @@
+<form [formGroup]="FileForm" class="d-flex flex-wrap justify-content-center">
+    <mat-form-field class="columns">
+        <mat-label *ngIf="selectedFiles; else newFile">{{selectedFiles.name}}</mat-label>
+        <ng-template #newFile>
+            <mat-label>Escoger archivos</mat-label>
+        </ng-template>
+        <input matInput disabled>
+        <button mat-icon-button matSuffix (click)="fileInput.click()" color="primary">
+            <mat-icon>attach_file</mat-icon>
+        </button>
+        <input hidden name="file" (change)="selectFile($event)" #fileInput type="file" id="file"
+            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+    </mat-form-field>
+    <div class="d-flex flex-wrap justify-content-center" style="margin-top: 15px;">
+        <button mat-button class="btn btn-primary btn-sm mr-3" [disabled]="FileForm.invalid" (click)="EnviarArchivo()"
+            type="submit">
+            Enviar
+            <mat-icon>send</mat-icon>
+        </button>
+        <button mat-button class="btn btn-danger btn-sm" type="submit" (click)="Limpiar()">
+            Cancelar
+            <mat-icon>backspace</mat-icon>
+        </button>
+    </div>
+</form>

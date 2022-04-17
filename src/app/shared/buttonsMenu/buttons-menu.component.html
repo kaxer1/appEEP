@@ -1,0 +1,23 @@
+<!-- Botón Logout  -->
+<ng-container *ngIf="!showBtn; then showBoton; else showColapseBtn"></ng-container>
+<ng-template #showBoton>
+
+    <button mat-mini-fab style="margin-left: 10px; background: rgba(25, 104, 223, 0.953) " (click)="loginService.logout()">
+        <mat-icon id="iconos-navegador">exit_to_app</mat-icon>
+    </button>
+
+</ng-template>
+
+<ng-template #showColapseBtn>
+
+    <button mat-icon-button [matMenuTriggerFor]="colapsado">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #colapsado="matMenu">
+        <button mat-menu-item (click)="loginService.logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Salir</span>
+        </button>
+    </mat-menu>
+
+</ng-template>

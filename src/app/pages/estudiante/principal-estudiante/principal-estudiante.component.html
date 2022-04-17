@@ -1,0 +1,30 @@
+<div class="container m-x-2 card" *ngIf="showVotos; else showMessageSuccess">
+
+    <h4 style="text-align: center;">Proceso: {{ procesos?.descripcion }}</h4>
+    <h5>Periodo: {{ procesos?.semestre }}</h5>
+    <span>Fecha: {{ procesos?.fec_eleccion | date: 'fullDate' }}</span>
+
+    <br>
+    <div class="d-flex flex-wrap justify-content-around">
+        <!-- <mat-card *ngFor="let item of procesos.lista_electoral " class="m-3 " [style.background]="'#F3F3F3'" [style.width]="'400px'"> -->
+        <mat-card *ngFor="let item of procesos?.lista_electoral " class="m-2 col-sm-11 col-md-5 col-lg-4 col-11" [style.background]="'#F3F3F3'">
+            <mat-card-title>{{ item.nom_lista }}</mat-card-title>
+            <mat-card-subtitle>{{ item.descripcion }}</mat-card-subtitle>
+            <img mat-card-image *ngIf="item.contenido !== null " src="{{item.contenido}}" class="img-fluid" alt="logo_empresa" srcset="">
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="saveVoto(item)" [style.width]="'100%'">VOTAR</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</div>
+
+<ng-template #showMessageSuccess>
+    <div class="container m-x-2 card">
+
+        <h2>Tu Voto ha sido procesado con exito.</h2>
+
+        <br>
+
+    </div>
+</ng-template>

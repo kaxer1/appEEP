@@ -1,0 +1,88 @@
+    <div class="row">
+        <div class="col-md-4 col-lg-4">
+            <mat-card class="mat-elevation-z8">
+                <mat-card-header>
+                    <h4> Subir plantilla estudiantes</h4>
+                </mat-card-header>
+                <mat-card-content>
+                    <app-uploadfiles [metodo]="'estudiantes'"></app-uploadfiles>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-8 col-lg-8">
+            <mat-card class="mat-elevation-z8">
+                <div class="cabecera-tabla">Estudiantes</div>
+                <table mat-table [dataSource]="dataSource" fixedLayout="true" style="width: 100%;">
+
+                    <!-- INICIO DATA DE LA TABLA -->
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef [class.a-center]="{'margin-left': '0px'}"> Código </th>
+                        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="fullname">
+                        <th mat-header-cell *matHeaderCellDef  > Nombre </th>
+                        <td mat-cell *matCellDef="let row"> {{row.fullname | titlecase}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="cedula">
+                        <th mat-header-cell *matHeaderCellDef > Cédula </th>
+                        <td mat-cell *matCellDef="let row"> {{row.cedula}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef > Email </th>
+                        <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="activo">
+                        <th mat-header-cell *matHeaderCellDef > Activo </th>
+                        <td mat-cell *matCellDef="let row" class="a-center">
+                            <mat-checkbox [checked]="row.activo" [color]="'primary'" [disabled]="true"></mat-checkbox>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="acciones">
+                        <th mat-header-cell *matHeaderCellDef > Acciones </th>
+                        <td mat-cell *matCellDef="let row" justify="end">
+                            <btn-editar [isButtom]="false" [registro]="row" (onEdit)="abirDialgo( $event )">
+                            </btn-editar>
+                            <btn-eliminar [isButtom]="false" [idreg]="row.id" [nameTable]="'usuario'"
+                                (onDelete)="ngOnInit()"></btn-eliminar>
+                        </td>
+                    </ng-container>
+                    <!-- FIN DATA DE LA TABLA -->
+
+                    <!-- INICIO FILTROS-->
+                    <ng-container matColumnDef="fid">
+                        <th mat-header-cell *matHeaderCellDef> </th>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ffullname">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <mat-form-field class="inputfiltros">
+                                <input matInput placeholder="Buscar" [(ngModel)]="pipe.fiNom" maxlength="100"
+                                    [formControl]="pipe.nombre"
+                                    (keypress)="soloLetras($event); pipe.filtroBDS(dataSource, pipe.fiNom)">
+                            </mat-form-field>
+                        </th>
+                    </ng-container>
+                    <ng-container matColumnDef="fcedula">
+                        <th mat-header-cell *matHeaderCellDef colspan="4"> 
+                            <mat-form-field class="inputfiltros">
+                                <input matInput placeholder="Buscar" [(ngModel)]="pipe.fiCed" maxlength="10" [formControl]="pipe.cedula" (keypress)="soloNumeros($event); pipe.filtroBDS(dataSource, pipe.fiCed)">
+                            </mat-form-field>
+                        </th>
+                    </ng-container>
+                    <!-- FINAL FILTROS-->
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-header-row *matHeaderRowDef="['fid','ffullname','fcedula']"
+                        class="example-second-header-row"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="6">No se encuentran registros</td>
+                    </tr>
+                </table>
+                <mat-paginator [pageSize]="tamanio_pagina" [pageSizeOptions]="pageSizeOptions"
+                    (page)="ManejarPagina($event)" showFirstLastButtons>
+                </mat-paginator>
+            </mat-card>
+        </div>
+    </div>

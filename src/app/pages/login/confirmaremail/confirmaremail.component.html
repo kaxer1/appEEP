@@ -1,0 +1,21 @@
+<header id="home-section">
+    <div class="dark-overlay">
+        <div class="home-inner">
+            <div class="d-flex justify-content-around flex-wrap">
+                <div class="Cajas">
+                    <mat-card class="mat-elevation-z8">
+                        <h4>Escribir email del usuario</h4>
+                        <form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Ingrese correo electrónico</mat-label>
+                                <input matInput placeholder="ejemplo@epn.edu.ec" formControlName="email" required>
+                                <mat-icon matSuffix>email</mat-icon>
+                            </mat-form-field>
+                        </form>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="Guardar(grupoFormulario.value)" [disabled]="!grupoFormulario.valid">Enviar</button>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

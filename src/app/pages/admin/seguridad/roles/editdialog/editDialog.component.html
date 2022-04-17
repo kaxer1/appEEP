@@ -1,0 +1,22 @@
+<app-dialog-titulo [titulo]="'Editar Rol'" (onCerrar)="dialogRef.close( $event )"></app-dialog-titulo>
+
+<form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">
+    <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="..." formControlName="nombre" required>
+        <mat-icon matSuffix matTooltip="Nombre principal del conjunto" id="icono-style">help_outline
+        </mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Tiempo sesion</mat-label>
+        <input matInput placeholder="..." formControlName="tiemposesion" required>
+        <mat-icon matSuffix matTooltip="Tiempo de sesion" id="icono-style">help_outline
+        </mat-icon>
+    </mat-form-field>
+    <section class="example-section">
+        <mat-checkbox formControlName="vota" color="primary">Vota</mat-checkbox>
+    </section>
+</form>
+
+<app-dialog-botones [tipoAccion]="'editar'" [formulario]="grupoFormulario" (onGuardar)="Guardar( $event )"
+    (onCancelar)="LimpiarCampos()"></app-dialog-botones>

@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-md-4 col-lg-4">
+        <mat-card class="mat-elevation-z8">
+            <mat-card-header>
+                <h4> Registra roles</h4>
+            </mat-card-header>
+            <mat-card-content>
+                <form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="..." formControlName="nombre" required (keypress)="soloLetras($event)">
+                        <mat-icon matSuffix matTooltip="Nombre principal del conjunto" id="icono-style">help_outline
+                        </mat-icon>
+                    </mat-form-field>
+                    <section class="example-section">
+                        <mat-checkbox formControlName="vota" color="primary">Vota</mat-checkbox>
+                    </section>
+                </form>
+            </mat-card-content>
+            <form-btn [formulario]="grupoFormulario" (onGuardar)="Guardar( $event )" (onCancelar)="LimpiarCampos()">
+            </form-btn>
+        </mat-card>
+    </div>
+    <div class="col-md-8 col-lg-8">
+        <mat-card class="mat-elevation-z8">
+            <div class="cabecera-tabla">Roles</div>
+            <table mat-table [dataSource]="dataSource" fixedLayout="true" style="width: 100%;" >
+
+                <!-- INICIO DATA DE LA TABLA -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef [class.a-center]="{'margin-left': '0px'}"> Código </th>
+                    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+                </ng-container>
+                <ng-container matColumnDef="vota">
+                    <th mat-header-cell *matHeaderCellDef> Vota </th>
+                    <td mat-cell *matCellDef="let row" class="a-center">
+                        <mat-checkbox [checked]="row.vota" [color]="'primary'" [disabled]="true"></mat-checkbox>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                    <td mat-cell *matCellDef="let row" justify="end">
+                        <btn-editar [isButtom]="false" [registro]="row" (onEdit)="abirDialgo( $event )">
+                        </btn-editar>
+                        <btn-eliminar [isButtom]="false" [idreg]="row.id" [nameTable]="'rol'"
+                            (onDelete)="ngOnInit()"></btn-eliminar>
+                    </td>
+                </ng-container>
+                <!-- FIN DATA DE LA TABLA -->
+
+                <!-- INICIO FILTROS-->
+                <ng-container matColumnDef="fid">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                </ng-container>
+
+                <ng-container matColumnDef="ffullname">
+                    <th mat-header-cell *matHeaderCellDef colspan="2">
+                        <mat-form-field class="inputfiltros">
+                            <input matInput placeholder="Buscar" [(ngModel)]="pipe.fiNom" maxlength="100"
+                                [formControl]="pipe.nombre"
+                                (keypress)="soloLetras($event); pipe.filtroBDS(dataSource, pipe.fiNom)">
+                        </mat-form-field>
+                    </th>
+                </ng-container>
+                <!-- FINAL FILTROS-->
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-header-row *matHeaderRowDef="['fid','ffullname']" class="example-second-header-row">
+                </tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="6">No se encuentran registros</td>
+                </tr>
+            </table>
+            <mat-paginator [pageSize]="tamanio_pagina" [pageSizeOptions]="pageSizeOptions"
+                (page)="ManejarPagina($event)" showFirstLastButtons>
+            </mat-paginator>
+        </mat-card>
+    </div>
+</div>

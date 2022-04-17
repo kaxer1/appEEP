@@ -1,0 +1,12 @@
+<ng-container *ngIf="isButtom; then showBtn; else showIcon"></ng-container>
+
+<ng-template #showBtn>
+    <button mat-button class="btn btn-primary" (click)="openDialog()">
+        <mat-icon>edit</mat-icon> {{label}}
+    </button>
+</ng-template>
+<ng-template #showIcon>
+
+    <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="openDialog()" style="color:#005ae0; margin-right: 3px;">edit</mat-icon>
+
+</ng-template>

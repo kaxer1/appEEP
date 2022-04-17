@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row" *ngFor="let q of QueryParams" style="padding-bottom: 25px;">
+        <div class="col">
+            <div class="titulo">
+                <h2>{{q.descripcion}}</h2>
+            </div>
+            <mat-card class="mat-elevation-z8">
+                <mat-card-content class="d-flex flex-wrap justify-content-center">
+                    <div id="items"><b>Fecha del proceso: </b> {{q.fecha.split("T")[0]}} </div>
+                    <div id="items"><b>Estado: </b> {{q.estado}} </div>
+                    <div id="items"><b>Semestre: </b> {{q.semestre}} </div>
+                </mat-card-content>
+                <div class="d-flex flex-wrap justify-content-around" *ngIf="Btn_Agregar">
+                    <button mat-button class="btn btn-primary" (click)="AbrirVentanaRegistroCandidatura()">
+                        <mat-icon> add_circle_outline </mat-icon> Agregar listas postulantes
+                    </button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row" *ngIf="HabilitarCards" style="padding-top: 10px;">
+        <div class="col-md-4" style="padding-bottom: 25px;" *ngFor="let c of listaCandidatos">
+            <div class="mat-elevation-z8">
+                <div class="caja-todo">
+                    <div class="titulo-tarjetas">
+                        <h4>{{c.nom_lista}} </h4>
+                    </div>
+                    <img *ngIf="c.contenido !== null " src="{{c.contenido}}" class="img-fluid" style="height: 250px;" alt="logo_empresa" srcset="">
+                    <p>{{c.descripcion}}</p>
+                    <div class="d-flex flex-wrap justify-content-around" id="caja-boton">
+                        <a mat-button type="button" class="btn btn-success" [routerLink]="['/candidatos/', c.id]"
+                            [queryParams]="{ nom_lista: c.nom_lista, estado: c.estado, descripcion: c.descripcion}" (click)="GuardarImagenLocal(c.logo)">
+                            <mat-icon class="icono-style color" matSuffix matTooltip="Visualiza la información de ese proceso electoral">
+                                add_circle_outline
+                            </mat-icon> Candidatos
+                        </a>
+                        <btn-editar [registro]="c" (onEdit)="abirDialgo( $event )" [label]="''">
+                        </btn-editar>
+                        <btn-eliminar [nameTable]="'lista_electoral'" [idreg]="c.id" (onDelete)="ngOnInit()" [label]="''"></btn-eliminar>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

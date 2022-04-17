@@ -1,0 +1,12 @@
+version: '3'
+services:
+  eep:
+    container_name: eep
+    image: appwebeep.azurecr.io/eep-prod:v1
+    build: .
+    ports:
+      - '80:80'
+    networks:
+      - eepapp-network
+networks:
+  eepapp-network:

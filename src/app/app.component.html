@@ -1,0 +1,17 @@
+<div [hidden]="login">
+    <app-nav class="fijo-arriba"></app-nav>
+        <div [ngSwitch]="validarUrl(url)">
+            <div *ngSwitchCase="'/recuperar'">
+                <app-recuperar-password></app-recuperar-password>
+            </div>
+            <div *ngSwitchCase="'/confirmaremail'">
+                <app-confirmar-email></app-confirmar-email>
+            </div>
+            <div *ngSwitchDefault>
+                <app-login></app-login>
+            </div>
+        </div>
+    <app-footer class="fijo-abajo"></app-footer>
+</div>
+
+<app-main [hidden]="!login"></app-main>

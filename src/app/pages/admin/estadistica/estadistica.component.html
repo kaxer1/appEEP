@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div *ngFor="let item of results | keyvalue">
+                <h5>
+                    <span style="font-weight: bold;">{{item.key}}:</span> {{item.value}} votos
+                </h5>
+            </div>
+
+            <pre> {{ votos | json }} </pre>
+        </div>
+    </div>
+</div>

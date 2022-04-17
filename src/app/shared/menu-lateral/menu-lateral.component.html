@@ -1,0 +1,38 @@
+<div class="uno">
+    <img src="../../../assets/imagenes/ESFOT_LOGO.jpg" id="logo">
+</div>
+
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle [ngStyle]="{ visibility: (node.name === '') ? 'hidden' : 'visible'}">
+      <li class="material-tree-node">
+        <ul>
+          <a class="btn btn-sm btn-block" [ngClass]="{active: node.name == nombreSelect}" (click)="manejarEstadoActivo(node.name);" [routerLink]="[node.url]"
+            style="text-align: left; color: rgb(255, 255, 255); font-size: 12px;">{{node.name}}</a>
+        </ul>
+      </li>
+    </mat-tree-node>
+
+    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+      <li>
+        <button mat-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name" style="width: 100%;">
+          <div class="tree-titulos d-flex bd-highlight">
+            <div class="bd-highlight">
+              <mat-icon mat-list-icon id="icono-menu">{{node.icono}}</mat-icon>
+            </div>
+            <div class="bd-highlight">
+              <h5 class="name-uno">{{node.name}}</h5>
+            </div>
+            <div class="ml-auto bd-highlight">
+              <mat-icon class="mat-icon-rtl-mirror" id="icono-despliega">
+                {{treeControl.isExpanded(node) ? 'remove' : 'add'}}
+              </mat-icon>
+            </div>
+          </div>
+        </button>
+        <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)"
+          [style.padding]="treeControl.isExpanded(node) ? '20px 0px 20px 0px' : '0px 0px 0px 0px'">
+          <ng-container matTreeNodeOutlet></ng-container>
+        </ul>
+      </li>
+    </mat-nested-tree-node>
+  </mat-tree>

@@ -1,0 +1,42 @@
+<header id="home-section">
+    <div class="dark-overlay">
+        <div class="home-inner">
+            <div class="d-flex justify-content-around flex-wrap">
+                <div class="Cajas">
+                    <mat-card class="mat-elevation-z8">
+                        <h4>Inicia Sesión</h4>
+                        <form [formGroup]="CredencialesLoggin">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Ingrese correo electrónico</mat-label>
+                                <input matInput placeholder="ejemplo@epn.edu.ec" [formControl]="emailCtrl" required>
+                                <mat-icon matSuffix>email</mat-icon>
+                                <mat-error *ngIf="emailCtrl.invalid">No has ingresado un email</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Ingrese contraseña</mat-label>
+                                <input (keyup.enter)="IniciarSession(CredencialesLoggin.value)" matInput [type]="hide1 ? 'password' : 'text'" [formControl]="passwordCtrl" required>
+                                <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                                    <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </form>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="IniciarSession(CredencialesLoggin.value)" [disabled]="!CredencialesLoggin.valid">Ingresar</button>
+                        <br>
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <span style="color: rgb(148, 148, 148); margin-top: 5px;">Olvidaste tu contraseña?</span>
+                            <a mat-button (click)="cambiarRuta()">Recuperar</a>
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="CajasDos">
+                    <p class="texto">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iste velit architecto neque repellat suscipit
+                        quisquam quae necessitatibus repellendus id ipsam magni officiis debitis veniam labore cumque, corporis commodi
+                        tenetur?
+                    </p>
+                    <img src="../../../assets/imagenes/computers.png" class="imagenMul" alt="Imagen Plataforma">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
