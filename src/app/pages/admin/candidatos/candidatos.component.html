@@ -30,14 +30,13 @@
                 <form-btn [formulario]="CandidatosForm" (onGuardar)="GuardarCandidato( $event )" (onCancelar)="LimpiarCampos()"></form-btn>
             </mat-card>
         </div>
-        <div class="col-lg">
-            <div class="titulo">
-                <h2>{{q.nom_lista}}</h2>
-            </div>
+        <div class="col-md-5">
             <mat-card class="mat-elevation-z8">
+                <mat-card-header>
+                    <mat-card-title>{{q.nom_lista | uppercase}}</mat-card-title>
+                  </mat-card-header>
+                <img mat-card-image *ngIf="imagen_local !== null " src="{{imagen_local}}" class="img-fluid" alt="logo_empresa" srcset="" style="width: 50%;">
                 <mat-card-content class="d-flex flex-wrap justify-content-center">
-                    <img *ngIf="imagen_local !== '' " src="{{imagen_local}}" class="img-fluid" alt="logo_empresa" srcset="">
-                    <br>
                     <div><b>Descripcion: </b> {{q.descripcion}} </div>
                 </mat-card-content>
             </mat-card> 
@@ -47,6 +46,7 @@
         <div class="col">
             <mat-card class="mat-elevation-z8">
                 <div class="table-responsive">
+                    <div class="cabecera-tabla">Candidatos</div>
                     <table class="table table-hover table-sm">
                         <thead class="thead-light">
                             <tr>

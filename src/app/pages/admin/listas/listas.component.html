@@ -29,7 +29,7 @@
                     <p>{{c.descripcion}}</p>
                     <div class="d-flex flex-wrap justify-content-around" id="caja-boton">
                         <a mat-button type="button" class="btn btn-success" [routerLink]="['/candidatos/', c.id]"
-                            [queryParams]="{ nom_lista: c.nom_lista, estado: c.estado, descripcion: c.descripcion}" (click)="GuardarImagenLocal(c.logo)">
+                            [queryParams]="{ nom_lista: c.nom_lista, estado: c.estado, descripcion: c.descripcion}" (click)="GuardarImagenLocal(c.contenido)">
                             <mat-icon class="icono-style color" matSuffix matTooltip="Visualiza la información de ese proceso electoral">
                                 add_circle_outline
                             </mat-icon> Candidatos

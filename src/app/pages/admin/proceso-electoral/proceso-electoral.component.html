@@ -6,37 +6,37 @@
                     <h4>Registra nuevo proceso</h4>
                 </mat-card-header>
                 <mat-card-content>
-                    <form [formGroup]="ProcesoElectoralForm" class="d-flex flex-wrap justify-content-center">
+                    <form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">    
                         <mat-form-field appearance="outline">
                             <mat-label>Ingrese Descripción</mat-label>
-                            <input matInput placeholder="Consejo de la Esfot" [formControl]="descripcionCtrl" required>
+                            <input matInput placeholder="Consejo de la Esfot" formControlName="descripcion" required>
                             <mat-icon matSuffix matTooltip="Aqui va el nombre o descripción del proceso electoral">help_outline</mat-icon>
-                            <mat-error *ngIf="descripcionCtrl.invalid">Llenar el campo por favor</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Ingrese Semestre</mat-label>
-                            <input matInput placeholder="Semestre 2020A" [formControl]="semestreCtrl" required>
+                            <input matInput placeholder="Semestre 2020A" formControlName="semestre" required>
                             <mat-icon matSuffix matTooltip="Aqui va el semestre que se llevara acabo el proceso electoral">help_outline</mat-icon>
-                            <mat-error *ngIf="semestreCtrl.invalid">Llenar el campo por favor</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Fecha de la elección</mat-label>
-                            <input matInput [matDatepicker]="picker" [formControl]="fec_eleccionCtrl" placeholder="dd/mm/aaaa" required>
+                            <input matInput [matDatepicker]="picker" formControlName="fec_eleccion" placeholder="dd/mm/aaaa" required>
                             <mat-datepicker-toggle matSuffix [for]="picker" matTooltip="Fecha en la que se efectuara el proceso electoral"></mat-datepicker-toggle>
                             <mat-datepicker touchUi #picker></mat-datepicker>
-                            <mat-error *ngIf="fec_eleccionCtrl.invalid">Llenar el campo por favor</mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Hora de Inicio</mat-label>
-                            <input matInput [formControl]="horainicioCtrl" type="time" (keypress)="IngresarSoloNumeros($event)" required>
+                            <input matInput formControlName="hora_inicio" type="time" (keypress)="IngresarSoloNumeros($event)" required>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Hora de Fin</mat-label>
-                            <input matInput [formControl]="horafinCtrl" type="time" (keypress)="IngresarSoloNumeros($event)" required>
+                            <input matInput formControlName="hora_final" type="time" (keypress)="IngresarSoloNumeros($event)" required>
                         </mat-form-field>
+                        <section class="example-section">
+                            <mat-checkbox formControlName="estado" color="primary">Estado</mat-checkbox>
+                        </section>
                     </form>
+                    <form-btn [formulario]="grupoFormulario" (onGuardar)="GuardarProcesoElectoral( $event )" (onCancelar)="LimpiarCampos()"></form-btn>
                 </mat-card-content>
-                <form-btn [formulario]="ProcesoElectoralForm" (onGuardar)="GuardarProcesoElectoral( $event )" (onCancelar)="LimpiarCampos()"></form-btn>
             </mat-card>
         </div>
         <div class="col-lg-8">

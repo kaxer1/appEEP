@@ -58,8 +58,6 @@ export class AppComponent implements OnInit {
   }
 
   iniciarAmbiente(user: User) {
-    console.log(user);
-    console.log(this.mmenu);
   }
 
   validarUrl(url: string): string {

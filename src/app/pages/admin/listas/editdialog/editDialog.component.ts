@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ListaService } from 'src/app/services/lista.service';
 
@@ -24,9 +24,13 @@ export class EditDialogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (this.data.contenido != null) {
+      this.logo = this.data.contenido;
+      this.imagen_default = true;
+    }
     this.actualizarListaForm = this.formBuilder.group({
       id: this.data.id,
-      image: [''],
+      image: this.data.contenido,
       nom_lista: this.data.nom_lista,
       descripcion: this.data.descripcion,
       estado: this.data.estado,

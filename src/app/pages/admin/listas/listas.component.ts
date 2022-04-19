@@ -51,8 +51,6 @@ export class ListasComponent implements OnInit {
       }
 
     })
-    console.log(this.QueryParams);
-    console.log(this.Btn_Agregar);
   }
 
   ObtenerLista(id_proceso: number) {
