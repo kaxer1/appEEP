@@ -12,6 +12,7 @@ import { DataCentralService } from '../../../libs/data-central.service';
 })
 export class RecuperarPasswordComponent implements OnInit {
 
+  hiddennewpassword = true;
   hiddenpassword = true;
 
   /**

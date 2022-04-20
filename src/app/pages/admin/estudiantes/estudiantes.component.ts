@@ -3,6 +3,8 @@ import { UserService } from '../../../services/user.service';
 import { DataCentralService } from '../../../libs/data-central.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { PipesService } from '../../../pipes/pipes.service';
+import { EditDialogComponent } from './editdialog/editDialog.component';
+import { RegistrarDialogComponent } from './registrardialog/registrarDialog.component';
 
 
 @Component({
@@ -26,6 +28,10 @@ export class EstudiantesComponent implements OnInit {
   constructor(private estudianteService: UserService, private dcentral: DataCentralService, public pipe: PipesService) { }
 
   ngOnInit(): void {
+    this.ObtenerListaEstudiantes();
+  }
+
+  ObtenerListaEstudiantes() {
     this.estudianteService.ListaEstudiantes().subscribe(resp => {
       if (resp.cod === "ERROR") {
         return;
@@ -40,13 +46,22 @@ export class EstudiantesComponent implements OnInit {
     this.tamanio_pagina = e.pageSize;
   }
 
-  abirDialgo( registro: any) {
-    // this.dcentral.dialog.open(EditDialogComponent, { width: '400px', data: registro, })
-    //   .afterClosed().subscribe(update => {
-    //     if (update === true) {
-    //       this.ObtenerListaCandidatos(this.id_lista)
-    //     }
-    //   })
+  abirDialgoEdit( registro: any) {
+    this.dcentral.dialog.open(EditDialogComponent, { width: '600px', data: registro })
+      .afterClosed().subscribe(update => {
+        if (update === true) {
+          this.ObtenerListaEstudiantes();
+        }
+      })
+  }
+
+  abirDialgoRegistro() {
+    this.dcentral.dialog.open(RegistrarDialogComponent, { width: '600px'})
+      .afterClosed().subscribe(update => {
+        if (update === true) {
+          this.ObtenerListaEstudiantes();
+        }
+      })
   }
 
   /** Método para validar el ingreso de letras */

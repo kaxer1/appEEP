@@ -19,4 +19,20 @@ export class UserService {
     return this.http.get<any>(`${this.API_URL}/lista`)
   }
 
+ /**
+   * Metodo para registra estudiante.
+   * @param data Datos del form
+   */
+  RegistrarEstudiante(data: any) {
+    return this.http.post<any>(`${this.API_URL}/registrar`, data)
+  }
+  
+  /**
+   * Metodo para actualizar estudiante.
+   * @param data Datos del form
+   */
+  ActualizarEstudiante(data: any) {
+    return this.http.put<any>(`${this.API_URL}/update`, data)
+  }
+
 }
