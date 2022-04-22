@@ -5,7 +5,7 @@
                 <h4> Subir plantilla estudiantes</h4>
             </mat-card-header>
             <mat-card-content>
-                <app-uploadfiles [metodo]="'estudiantes'"></app-uploadfiles>
+                <app-uploadfiles [metodo]="'estudiantes'" (onUploadSuccess)="ObtenerListaEstudiantes()"></app-uploadfiles>
             </mat-card-content>
         </mat-card>
     </div>
