@@ -21,6 +21,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
+
+//Directivas
+import { DebounceKeyupDirective } from './directives/debounce-keyup.directive';
+import { DebounceMayusculasDirective } from './directives/debounce-mayusculas.directive';
 
 @NgModule({
   exports: [
@@ -44,7 +49,14 @@ import { MatSelectModule } from '@angular/material/select';
     MatProgressSpinnerModule,
     MatGridListModule,
     MatCheckboxModule,
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule,
+    DebounceKeyupDirective,
+    DebounceMayusculasDirective
+  ], 
+  declarations: [
+    DebounceKeyupDirective,
+    DebounceMayusculasDirective
   ]
 })
 export class MaterialModule { }

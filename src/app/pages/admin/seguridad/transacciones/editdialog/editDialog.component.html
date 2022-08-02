@@ -3,13 +3,13 @@
 <form [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">
     <mat-form-field appearance="outline">
         <mat-label>Ruta url</mat-label>
-        <input matInput disabled placeholder="..." formControlName="ruta" required>
+        <input matInput trimKeyUp disabled placeholder="..." formControlName="ruta" required>
         <mat-icon matSuffix matTooltip="Ruta Url de la transaccion" id="icono-style">help_outline
         </mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Path modulo</mat-label>
-        <input matInput placeholder="..." formControlName="path" required>
+        <input matInput trimKeyUp placeholder="..." formControlName="path" required>
         <mat-icon matSuffix matTooltip="Path del modulo de parametrizado" id="icono-style">help_outline
         </mat-icon>
     </mat-form-field>

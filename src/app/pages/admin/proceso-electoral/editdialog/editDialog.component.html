@@ -3,12 +3,12 @@
 <form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">    
     <mat-form-field appearance="outline">
         <mat-label>Ingrese Descripción</mat-label>
-        <input matInput placeholder="Consejo de la Esfot" formControlName="descripcion" required>
+        <input matInput mayusculas placeholder="Consejo de la Esfot" formControlName="descripcion" maxlength="100" required>
         <mat-icon matSuffix matTooltip="Aqui va el nombre o descripción del proceso electoral">help_outline</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Ingrese Semestre</mat-label>
-        <input matInput placeholder="Semestre 2020A" formControlName="semestre" required>
+        <input matInput mayusculas placeholder="Semestre 2020A" formControlName="semestre" maxlength="100"required>
         <mat-icon matSuffix matTooltip="Aqui va el semestre que se llevara acabo el proceso electoral">help_outline</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -19,11 +19,11 @@
     </mat-form-field>
     <mat-form-field>
         <mat-label>Hora de Inicio</mat-label>
-        <input matInput formControlName="hora_inicio" type="time" (keypress)="IngresarSoloNumeros($event)" required>
+        <input matInput trimKeyUp formControlName="hora_inicio" type="time" (keypress)="IngresarSoloNumeros($event)" required>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Hora de Fin</mat-label>
-        <input matInput formControlName="hora_final" type="time" (keypress)="IngresarSoloNumeros($event)" required>
+        <input matInput trimKeyUp formControlName="hora_final" type="time" (keypress)="IngresarSoloNumeros($event)" required>
     </mat-form-field>
     <section class="example-section">
         <mat-checkbox formControlName="estado" color="primary">Estado</mat-checkbox>

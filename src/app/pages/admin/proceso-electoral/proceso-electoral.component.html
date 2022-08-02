@@ -1,89 +1,87 @@
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4" style="padding-bottom: 25px;">
-            <mat-card class="mat-elevation-z8">
-                <mat-card-header>
-                    <h4>Registra nuevo proceso</h4>
-                </mat-card-header>
-                <mat-card-content>
-                    <form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">    
-                        <mat-form-field appearance="outline">
-                            <mat-label>Ingrese Descripción</mat-label>
-                            <input matInput placeholder="Consejo de la Esfot" formControlName="descripcion" required>
-                            <mat-icon matSuffix matTooltip="Aqui va el nombre o descripción del proceso electoral">help_outline</mat-icon>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Ingrese Semestre</mat-label>
-                            <input matInput placeholder="Semestre 2020A" formControlName="semestre" required>
-                            <mat-icon matSuffix matTooltip="Aqui va el semestre que se llevara acabo el proceso electoral">help_outline</mat-icon>
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Fecha de la elección</mat-label>
-                            <input matInput [matDatepicker]="picker" formControlName="fec_eleccion" placeholder="dd/mm/aaaa" required>
-                            <mat-datepicker-toggle matSuffix [for]="picker" matTooltip="Fecha en la que se efectuara el proceso electoral"></mat-datepicker-toggle>
-                            <mat-datepicker touchUi #picker></mat-datepicker>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-label>Hora de Inicio</mat-label>
-                            <input matInput formControlName="hora_inicio" type="time" (keypress)="IngresarSoloNumeros($event)" required>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-label>Hora de Fin</mat-label>
-                            <input matInput formControlName="hora_final" type="time" (keypress)="IngresarSoloNumeros($event)" required>
-                        </mat-form-field>
-                        <section class="example-section">
-                            <mat-checkbox formControlName="estado" color="primary">Estado</mat-checkbox>
-                        </section>
-                    </form>
-                    <form-btn [formulario]="grupoFormulario" (onGuardar)="GuardarProcesoElectoral( $event )" (onCancelar)="LimpiarCampos()"></form-btn>
-                </mat-card-content>
-            </mat-card>
-        </div>
-        <div class="col-lg-8">
-            <mat-card class="mat-elevation-z8">
-                <mat-form-field style="width: 90%;">
-                    <mat-label>Escribe para Filtrar</mat-label>
-                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-                </mat-form-field>
-                <div class="table-responsive">
-                    <div class="cabecera-tabla">Proceso electoral</div>
-                    <table class="table table-hover table-sm">
-                        <thead class="thead-light">
-                            <tr>
-                                <th style="text-align: right;" scope="col">Código</th>
-                                <th scope="col">Descripción</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col">Semestre</th>
-                                <th scope="col">Fecha</th>
-                                <th style="text-align: center;" scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let reg of lregistros | procesos: filtroProcesos">
-                                <td style="text-align: right;" scope="row">{{reg.id}}</td>
-                                <td>{{reg.descripcion}}</td>
-                                <td>{{reg.estado}}</td>
-                                <td>{{reg.semestre}}</td>
-                                <td>{{reg.fec_eleccion |date: 'dd-MM-yyyy'}}</td>
-                                <td class="d-flex justify-content-center">
-                                    <a type="button" [routerLink]="['/listas/', reg.id]"
-                                        [queryParams]="{ descripcion: reg.descripcion, estado: reg.estado, semestre: reg.semestre, fecha: reg.fec_eleccion }">
-                                        <mat-icon class="icono-style color" matSuffix matTooltip="Visualiza la información de ese proceso electoral">
-                                            assignment
-                                        </mat-icon>
-                                    </a>
-                                    <btn-editar [isButtom]="false" [registro]="reg" (onEdit)="abirDialgo( $event )">
-                                    </btn-editar>
-                                    <btn-eliminar [isButtom]="false" [idreg]="reg.id" [nameTable]="'proceso_electoral'"
-                                        (onDelete)="ngAfterViewInit()"></btn-eliminar>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-            </mat-card>
-        </div>
+<div class="row">
+    <div class="col-lg-4" style="padding-bottom: 25px;">
+        <mat-card class="mat-elevation-z8">
+            <mat-card-header>
+                <h4>Registra nuevo proceso</h4>
+            </mat-card-header>
+            <mat-card-content>
+                <form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">    
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ingrese Descripción</mat-label>
+                        <input matInput mayusculas placeholder="Consejo de la Esfot" formControlName="descripcion" maxlength="100" required>
+                        <mat-icon matSuffix matTooltip="Aqui va el nombre o descripción del proceso electoral">help_outline</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ingrese Semestre</mat-label>
+                        <input matInput mayusculas placeholder="Semestre 2020A" formControlName="semestre" maxlength="100" required>
+                        <mat-icon matSuffix matTooltip="Aqui va el semestre que se llevara acabo el proceso electoral">help_outline</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fecha de la elección</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fec_eleccion" placeholder="dd/mm/aaaa" required>
+                        <mat-datepicker-toggle matSuffix [for]="picker" matTooltip="Fecha en la que se efectuara el proceso electoral"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field style="width: 120px !important;">
+                        <mat-label>Hora de Inicio</mat-label>
+                        <input matInput trimKeyUp formControlName="hora_inicio" type="time" (keypress)="IngresarSoloNumeros($event)" required>
+                    </mat-form-field>
+                    <mat-form-field style="width: 120px !important;">
+                        <mat-label>Hora de Fin</mat-label>
+                        <input matInput trimKeyUp formControlName="hora_final" type="time" (keypress)="IngresarSoloNumeros($event)" required>
+                    </mat-form-field>
+                    <section class="example-section">
+                        <mat-checkbox formControlName="estado" color="primary">Activo?</mat-checkbox>
+                    </section>
+                </form>
+                <form-btn [formulario]="grupoFormulario" (onGuardar)="GuardarProcesoElectoral( $event )" (onCancelar)="LimpiarCampos()"></form-btn>
+            </mat-card-content>
+        </mat-card>
     </div>
-    <div class="row"></div>
+    <div class="col-lg-8">
+        <mat-card class="mat-elevation-z8">
+            <mat-form-field style="width: 90%;">
+                <mat-label>Escribe para Filtrar</mat-label>
+                <input matInput trimKeyUp (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+            </mat-form-field>
+            <div class="table-responsive">
+                <div class="cabecera-tabla">Proceso electoral</div>
+                <table class="table table-hover table-sm">
+                    <thead class="thead-light">
+                        <tr>
+                            <th style="text-align: right;" scope="col">Código</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Semestre</th>
+                            <th scope="col">Fecha</th>
+                            <th style="text-align: center;" scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let reg of lregistros | procesos: filtroProcesos">
+                            <td style="text-align: right;" scope="row">{{reg.id}}</td>
+                            <td>{{reg.descripcion}}</td>
+                            <td>{{reg.estado}}</td>
+                            <td>{{reg.semestre}}</td>
+                            <td>{{reg.fec_eleccion |date: 'dd-MM-yyyy'}}</td>
+                            <td class="d-flex justify-content-center">
+                                <a type="button" [routerLink]="['/listas/', reg.id]"
+                                    [queryParams]="{ descripcion: reg.descripcion, estado: reg.estado, semestre: reg.semestre, fecha: reg.fec_eleccion }">
+                                    <mat-icon class="icono-style color" matSuffix matTooltip="Visualiza la información de ese proceso electoral">
+                                        assignment
+                                    </mat-icon>
+                                </a>
+                                <btn-editar [isButtom]="false" [registro]="reg" (onEdit)="abirDialgo( $event )">
+                                </btn-editar>
+                                <btn-eliminar [isButtom]="false" [idreg]="reg.id" [nameTable]="'proceso_electoral'"
+                                    (onDelete)="ngAfterViewInit()"></btn-eliminar>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </mat-card>
+    </div>
 </div>
+<div class="row"></div>

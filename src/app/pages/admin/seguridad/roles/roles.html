@@ -8,8 +8,14 @@
                 <form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">
                     <mat-form-field appearance="outline">
                         <mat-label>Nombre</mat-label>
-                        <input matInput placeholder="..." formControlName="nombre" required (keypress)="soloLetras($event)">
+                        <input matInput mayusculas placeholder="..." formControlName="nombre" required (keypress)="soloLetras($event)">
                         <mat-icon matSuffix matTooltip="Nombre principal del conjunto" id="icono-style">help_outline
+                        </mat-icon>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Tiempo sesión</mat-label>
+                        <input matInput trimKeyUp placeholder="..." formControlName="tiemposesion" required>
+                        <mat-icon matSuffix matTooltip="Tiempo de sesión en segundos" id="icono-style">help_outline
                         </mat-icon>
                     </mat-form-field>
                     <section class="example-section">
@@ -60,7 +66,7 @@
                 <ng-container matColumnDef="ffullname">
                     <th mat-header-cell *matHeaderCellDef colspan="2">
                         <mat-form-field class="inputfiltros">
-                            <input matInput placeholder="Buscar" [(ngModel)]="pipe.fiNom" maxlength="100"
+                            <input matInput trimKeyUp placeholder="Buscar" [(ngModel)]="pipe.fiNom" maxlength="100"
                                 [formControl]="pipe.nombre"
                                 (keypress)="soloLetras($event); pipe.filtroBDS(dataSource, pipe.fiNom)">
                         </mat-form-field>

@@ -3,35 +3,35 @@
 <form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center mt-3">
     <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
-        <input matInput placeholder="..." formControlName="username" maxlength="100" required>
+        <input matInput trimKeyUp placeholder="..." formControlName="username" maxlength="100" required>
         <mat-icon matSuffix matTooltip="Username" id="icono-style">help_outline
         </mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Nombres</mat-label>
-        <input matInput placeholder="..." formControlName="nombre" maxlength="150" required>
+        <input matInput mayusculas placeholder="..." formControlName="nombre" maxlength="150" required>
         <mat-icon matSuffix matTooltip="Nombres de estudiante o usuario" id="icono-style">help_outline</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Apellidos</mat-label>
-        <input matInput placeholder="..." formControlName="apellido" maxlength="150" required>
+        <input matInput mayusculas placeholder="..." formControlName="apellido" maxlength="150" required>
         <mat-icon matSuffix matTooltip="Apellidos de estudiante o usuario" id="icono-style">help_outline</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Cédula</mat-label>
-        <input matInput placeholder="..." formControlName="cedula" maxlength="10" required>
+        <input matInput trimKeyUp placeholder="..." formControlName="cedula" maxlength="10" required>
         <mat-icon matSuffix matTooltip="Cédula de estudiante o usuario" id="icono-style">help_outline</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Contraseña</mat-label>
-        <input matInput [type]="hiddenpassword ? 'password' : 'text'" formControlName="password" maxlength="50"  required>
+        <input matInput trimKeyUp [type]="hiddenpassword ? 'password' : 'text'" formControlName="password" maxlength="50"  required>
         <button mat-icon-button matSuffix (click)="hiddenpassword = !hiddenpassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hiddenpassword">
             <mat-icon>{{hiddenpassword ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="ejemplo@epn.edu.ec" formControlName="email" maxlength="200"  required>
+        <input matInput trimKeyUp placeholder="ejemplo@epn.edu.ec" formControlName="email" maxlength="200"  required>
         <mat-icon matSuffix  matTooltip="Email de estudiante o usuario" id="icono-style">email</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">

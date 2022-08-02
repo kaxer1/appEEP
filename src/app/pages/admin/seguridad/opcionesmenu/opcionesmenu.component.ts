@@ -36,9 +36,9 @@ export class OpcionesMenuComponent implements OnInit {
   ngOnInit(): void {
     this.grupoFormulario = this.fb.group({
       id_rol: ['', [Validators.required, Validators.minLength(1)]],
-      cruta: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      cruta: ['', [Validators.minLength(2), Validators.maxLength(50)]],
       id_padre: [null],
-      nombre: ['', [Validators.required, Validators.maxLength(100)]],
+      nombre: ['', [Validators.maxLength(100)]],
       icon: ['', [Validators.maxLength(100)]],
       crear: [false],
       editar: [false],

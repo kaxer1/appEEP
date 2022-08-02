@@ -43,7 +43,6 @@ export class EditDialogComponent implements OnInit {
   }
 
   Guardar(form) {
-    form.nombre = form.nombre.toUpperCase();
     this.segService.MantenimientoRol(form, 1).subscribe(res => {
       if (res.cod === "ERROR") {
         return;

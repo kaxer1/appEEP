@@ -22,14 +22,14 @@
             <div class="d-flex flex-wrap justify-content-center">
                 <mat-form-field>
                     <mat-label>Nombre Lista</mat-label>
-                    <input matInput placeholder="Partido ESFOT" formControlName="nom_lista" required>
+                    <input matInput mayusculas placeholder="Partido ESFOT" formControlName="nom_lista" required>
                     <mat-icon matSuffix matTooltipPosition="right"
                         matTooltip="Ingresa el nombre de la lista a participar en este proceso.">
                         help_outline</mat-icon>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Descripción</mat-label>
-                    <input matInput #message maxlength="255" placeholder="..." formControlName="descripcion" required>
+                    <input matInput trimKeyUp #message maxlength="255" placeholder="..." formControlName="descripcion" required>
                     <mat-hint align="start"><strong>Escribe un corto mensaje</strong> </mat-hint>
                     <mat-hint align="end">{{message.value.length}} / 255</mat-hint>
                     <mat-icon matSuffix matTooltipPosition="right" matTooltip="Ingresa descripción o propuesta corta">

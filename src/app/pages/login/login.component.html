@@ -8,7 +8,7 @@
                         <form [formGroup]="CredencialesLoggin">
                             <mat-form-field appearance="outline">
                                 <mat-label>Ingrese correo electrónico</mat-label>
-                                <input matInput placeholder="ejemplo@epn.edu.ec" [formControl]="emailCtrl" required>
+                                <input matInput trimKeyUp placeholder="ejemplo@epn.edu.ec" [formControl]="emailCtrl" required>
                                 <mat-icon matSuffix>email</mat-icon>
                                 <mat-error *ngIf="emailCtrl.invalid">No has ingresado un email</mat-error>
                             </mat-form-field>
@@ -30,9 +30,7 @@
                 </div>
                 <div class="CajasDos">
                     <p class="texto">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iste velit architecto neque repellat suscipit
-                        quisquam quae necessitatibus repellendus id ipsam magni officiis debitis veniam labore cumque, corporis commodi
-                        tenetur?
+                        Sistema web de votación en linea para los procesos electorales de la ESFOT.
                     </p>
                     <img src="../../../assets/imagenes/computers.png" class="imagenMul" alt="Imagen Plataforma">
                 </div>

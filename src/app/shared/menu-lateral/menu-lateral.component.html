@@ -2,6 +2,13 @@
     <img src="../../../assets/imagenes/ESFOT_LOGO.jpg" id="logo">
 </div>
 
+<div class="d-flex flex-wrap justify-content-center" style="width: 100%;">
+  <mat-chip-list>
+    <mat-chip color="primary" selected>ROL: {{user?.nrol | uppercase}}</mat-chip>
+  </mat-chip-list>
+</div>
+
+
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
     <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle [ngStyle]="{ visibility: (node.name === '') ? 'hidden' : 'visible'}">
       <li class="material-tree-node">

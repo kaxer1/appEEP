@@ -42,11 +42,11 @@ export class EditDialogComponent implements OnInit {
   ngOnInit(): void {
     this.grupoFormulario = this.fb.group({
       id: ['', [Validators.required]],
-      username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
-      nombre: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(150)]],
-      apellido: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(150)]],
+      username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
+      nombre: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(150)]],
+      apellido: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(150)]],
       cedula: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(10)]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]],
+      password: ['', [Validators.maxLength(50)]],
       email: ['', [Validators.maxLength(200)]],
       activo: [true],
       rol: [null],
@@ -76,7 +76,12 @@ export class EditDialogComponent implements OnInit {
   Guardar(form) {
     form.nombre = form.nombre.toUpperCase();
     form.apellido = form.apellido.toUpperCase();
-    form.password = SHA256(form.password).toString();
+    if (form.password == '') {
+      delete form.password;
+    } else {
+      form.password = SHA256(form.password).toString(); 
+    }
+
     this.userService.ActualizarEstudiante(form).subscribe(res => {
       if (res.cod === "ERROR") {
         return;

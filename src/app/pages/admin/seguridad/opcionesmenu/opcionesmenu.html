@@ -2,7 +2,7 @@
     <div class="col-md-4 col-lg-4">
         <mat-card class="mat-elevation-z8">
             <mat-card-header>
-                <h4> Registra opción de menu</h4>
+                <h4> Registra opción de menú</h4>
             </mat-card-header>
             <mat-card-content>
                 <form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">
@@ -16,7 +16,7 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Ruta</mat-label>
-                        <mat-select formControlName="cruta" required>
+                        <mat-select formControlName="cruta">
                             <mat-option *ngFor="let tran of ltransacciones" [value]="tran.ruta">
                                 {{tran.ruta}}
                             </mat-option>
@@ -24,14 +24,14 @@
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Nombre</mat-label>
-                        <input matInput placeholder="..." formControlName="nombre" required (keypress)="soloLetras($event)">
-                        <mat-icon matSuffix matTooltip="Nombre principal del conjunto" id="icono-style">help_outline
+                        <input matInput mayusculas placeholder="..." formControlName="nombre" (keypress)="soloLetras($event)">
+                        <mat-icon matSuffix matTooltip="Nombre principal del menú" id="icono-style">help_outline
                         </mat-icon>
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Icon</mat-label>
-                        <input matInput placeholder="..." formControlName="icon" (keypress)="soloLetras($event)">
-                        <mat-icon matSuffix matTooltip="Nombre icono" id="icono-style">help_outline</mat-icon>
+                        <input matInput trimKeyUp placeholder="..." formControlName="icon" (keypress)="soloLetras($event)">
+                        <mat-icon matSuffix matTooltip="Nombre icono definidos por angular material" id="icono-style">help_outline</mat-icon>
                     </mat-form-field>
                     <section class="example-section">
                         <mat-checkbox formControlName="crear" color="primary">Crear</mat-checkbox>
@@ -112,7 +112,7 @@
                 <ng-container matColumnDef="fnol">
                     <th mat-header-cell *matHeaderCellDef>
                         <mat-form-field class="inputfiltros">
-                            <input matInput placeholder="Buscar" [(ngModel)]="pipe.fiCed" maxlength="100"
+                            <input matInput trimKeyUp placeholder="Buscar" [(ngModel)]="pipe.fiCed" maxlength="100"
                                 [formControl]="pipe.cedula"
                                 (keypress)="soloLetras($event); pipe.filtroBDS(dataSource, pipe.fiCed)">
                         </mat-form-field>
@@ -121,7 +121,7 @@
                 <ng-container matColumnDef="ffullname">
                     <th mat-header-cell *matHeaderCellDef colspan="6">
                         <mat-form-field class="inputfiltros">
-                            <input matInput placeholder="Buscar" [(ngModel)]="pipe.fiNom" maxlength="100"
+                            <input matInput trimKeyUp placeholder="Buscar" [(ngModel)]="pipe.fiNom" maxlength="100"
                                 [formControl]="pipe.nombre"
                                 (keypress)="soloLetras($event); pipe.filtroBDS(dataSource, pipe.fiNom)">
                         </mat-form-field>

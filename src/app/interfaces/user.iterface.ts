@@ -17,7 +17,14 @@ export interface User {
     cedula: string,
     email: string,
     rol: number,
-    iniciales: string
+    iniciales: string,
+    sufrago?: boolean,
+    activo?: boolean | null,
+    estudiante?: boolean | null,
+    password?: string,
+    vota?: boolean
+    tiemposesion?: number,
+    nrol?: string
 }
 
 export const userDefault: User = {

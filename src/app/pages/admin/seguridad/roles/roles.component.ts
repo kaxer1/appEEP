@@ -33,8 +33,10 @@ export class RolesComponent implements OnInit {
 
   ngOnInit(): void {
     this.grupoFormulario = this.fb.group({
+      id: ['', [Validators.required]],
       nombre: ['', [Validators.required, Validators.maxLength(100)]],
-      vota: [false]
+      vota: [false],
+      tiemposesion: ['', [Validators.required, Validators.maxLength(100)]]
     });
 
     this.ObtenerListaRol();

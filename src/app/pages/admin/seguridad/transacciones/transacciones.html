@@ -2,20 +2,20 @@
     <div class="col-md-4 col-lg-4">
         <mat-card class="mat-elevation-z8">
             <mat-card-header>
-                <h4> Registra Transaccion</h4>
+                <h4> Registra Transacción</h4>
             </mat-card-header>
             <mat-card-content>
                 <form novalidate [formGroup]="grupoFormulario" class="d-flex flex-wrap justify-content-center">
                     <mat-form-field appearance="outline">
                         <mat-label>Ruta url</mat-label>
-                        <input matInput placeholder="..." formControlName="ruta" required>
-                        <mat-icon matSuffix matTooltip="Ruta Url de la transaccion" id="icono-style">help_outline
+                        <input matInput trimKeyUp placeholder="..." formControlName="ruta" required>
+                        <mat-icon matSuffix matTooltip="Ruta Url de la transacción" id="icono-style">help_outline
                         </mat-icon>
                     </mat-form-field>
                     <mat-form-field appearance="outline">
                         <mat-label>Path modulo</mat-label>
-                        <input matInput placeholder="..." formControlName="path" required>
-                        <mat-icon matSuffix matTooltip="Path del modulo de parametrizado" id="icono-style">help_outline
+                        <input matInput trimKeyUp placeholder="..." formControlName="path" required>
+                        <mat-icon matSuffix matTooltip="Path del módulo de parametrizado" id="icono-style">help_outline
                         </mat-icon>
                     </mat-form-field>
                 </form>
@@ -26,7 +26,7 @@
     </div>
     <div class="col-md-8 col-lg-8">
         <mat-card class="mat-elevation-z8">
-            <div class="cabecera-tabla">Transaccion</div>
+            <div class="cabecera-tabla">Transacción</div>
             <table mat-table [dataSource]="dataSource" fixedLayout="true" style="width: 100%;" >
 
                 <!-- INICIO DATA DE LA TABLA -->
@@ -53,7 +53,7 @@
                 <ng-container matColumnDef="fruta">
                     <th mat-header-cell *matHeaderCellDef>
                         <mat-form-field class="inputfiltros">
-                            <input matInput placeholder="Buscar" [(ngModel)]="pipe.fiNom" maxlength="100"
+                            <input matInput trimKeyUp placeholder="Buscar" [(ngModel)]="pipe.fiNom" maxlength="100"
                                 [formControl]="pipe.nombre"
                                 (keypress)="soloLetras($event); pipe.filtroBDS(dataSource, pipe.fiNom)">
                         </mat-form-field>

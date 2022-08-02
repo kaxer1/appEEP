@@ -18,7 +18,7 @@ export class UploadfilesComponent implements OnInit {
 
   public FileForm: FormGroup
   
-  public selectedFiles: File;
+  public selectedFiles: File = null;
 
   constructor(private formBuilder: FormBuilder, private dcentral: DataCentralService) { }
 
@@ -35,6 +35,9 @@ export class UploadfilesComponent implements OnInit {
 
   EnviarArchivo() {
 
+    if (this.selectedFiles == null) {
+      return this.dcentral.mostrarmsgerror('ELIGA UN ARCHIVO PARA ENVIAR.')
+    }
     const formData = new FormData();
     formData.append('file', this.selectedFiles);
 
@@ -47,6 +50,8 @@ export class UploadfilesComponent implements OnInit {
 
   Limpiar() {
     this.fileInput.nativeElement.value = '';
+    this.FileForm.reset();
+    this.selectedFiles = null;
   }
 
 }

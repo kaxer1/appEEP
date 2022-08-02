@@ -9,19 +9,19 @@
                     <form [formGroup]="CandidatosForm" class="d-flex flex-wrap justify-content-center">
                         <mat-form-field appearance="outline">
                             <mat-label>Ingrese nombres</mat-label>
-                            <input matInput placeholder="Kevin Alexander" [formControl]="nombreCtrl" required>
+                            <input matInput mayusculas placeholder="Kevin Alexander" [formControl]="nombreCtrl" required>
                             <mat-icon matSuffix matTooltip="Aqui va el nombre del candidato" id="icono-style">help_outline</mat-icon>
                             <mat-error *ngIf="nombreCtrl.invalid">Llenar el campo por favor</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Ingrese apellidos</mat-label>
-                            <input matInput placeholder="Curay Lasluisa" [formControl]="apellidoCtrl" required>
+                            <input matInput mayusculas placeholder="Curay Lasluisa" [formControl]="apellidoCtrl" required>
                             <mat-icon matSuffix matTooltip="Aqui va el apellido del candidato" id="icono-style">help_outline</mat-icon>
                             <mat-error *ngIf="apellidoCtrl.invalid">Llenar el campo por favor</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Ingrese cargo postula</mat-label>
-                            <input matInput placeholder="Vicepresidente Financiero" [formControl]="cargoCtrl" required>
+                            <input matInput mayusculas placeholder="Vicepresidente Financiero" [formControl]="cargoCtrl" required>
                             <mat-icon matSuffix matTooltip="Aqui va el cargo del candidato" id="icono-style">help_outline</mat-icon>
                             <mat-error *ngIf="cargoCtrl.invalid">Llenar el campo por favor</mat-error>
                         </mat-form-field>

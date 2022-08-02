@@ -1,8 +1,8 @@
 <form [formGroup]="FileForm" class="d-flex flex-wrap justify-content-center">
-    <mat-form-field class="columns">
+    <mat-form-field class="columns" style="width: 250px !important;">
         <mat-label *ngIf="selectedFiles; else newFile">{{selectedFiles.name}}</mat-label>
         <ng-template #newFile>
-            <mat-label>Escoger archivos</mat-label>
+            <mat-label>Escoger archivo</mat-label>
         </ng-template>
         <input matInput disabled>
         <button mat-icon-button matSuffix (click)="fileInput.click()" color="primary">
